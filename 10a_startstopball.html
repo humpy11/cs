@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript-driven Animation</title>
+    <style>
+        #ball {
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="ball"></div>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+
+    <script>
+        const ball = document.getElementById("ball");
+        const startButton = document.getElementById("startButton");
+        const stopButton = document.getElementById("stopButton");
+
+        let id;
+        let posX = 0;
+
+        function animate() {
+            
+
+            posX += 5;
+            ball.style.left = posX + "px";
+           // if (posX < window.innerWidth - ball.offsetWidth) {
+              id= requestAnimationFrame(animate);
+            //}
+        }
+
+        startButton.addEventListener("click", function() {
+           // animationId = 
+           id = requestAnimationFrame(animate);
+        });
+
+        stopButton.addEventListener("click", function() {
+            cancelAnimationFrame(id);
+        });
+    </script>
+</body>
+</html>

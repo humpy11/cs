@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Color on Key Press</title>
+    <style>
+        #box1 {
+            height: 200px;
+            width: 200px;
+            background-color: black;
+            color: black;
+			position: absolute;
+			top: 100px;
+			left:100px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="box1">.</div>
+
+    <script>
+	const divBox= document.getElementById("box1")
+	var t = 100
+	var l= 100
+	
+        function changePos(event) {
+		var k = event.key
+		if (k=="ArrowUp"){
+			t = t+10; 
+		}
+		else if( k=="ArrowDown"){
+			t = t-10;
+		}
+		else if(k =="ArrowLeft"){
+		l = l+10
+		}
+		else if(k == "ArrowRight"){
+		l = l-10
+		}
+		
+		divBox.style.top = t+"px"; 
+		divBox.style.left = l+"px";
+		
+          
+           
+        }
+		document.addEventListener("keydown", changePos)
+    </script>
+</body>
+</html>

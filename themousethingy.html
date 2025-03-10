@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas height=" 1000" width = 1000 style ="border:2px solid black" id = "can"></canvas>
+
+    <script>
+        const can = document.getElementById("can"); 
+        const ctx = can.getContext("2d"); 
+        let x = Math.random()*can.width; 
+        let y = Math.random()*can.height; 
+        let rad = 20; 
+       // let dy = 2; 
+        //let dx = 2; 
+        can.addEventListener("mousemove", function(event){
+            x = event.offsetX; 
+            y = event.offsetY; 
+
+
+        })
+
+
+        function animate(){
+            ctx.clearRect(0,0, can.width, can.height)
+            ctx.beginPath()
+            ctx.arc(x, y, rad, 0, 2*Math.PI); 
+            
+            ctx.fillStyle="blue"
+            ctx.fill()
+            ctx.closePath();
+            /*
+            x = x + dx; 
+            y = y+dy; 
+            if (x+rad >can.width || x-rad <0){
+                dx= -dx; 
+            }
+            if (y+rad >can.height || y-rad <0){
+                dy = -dy; 
+            }
+                */
+
+            requestAnimationFrame(animate)
+        }
+        animate()
+
+    </script>
+    
+</body>
+</html>
