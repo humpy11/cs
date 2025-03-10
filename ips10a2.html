@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            height: 400px; 
+            width:500px; 
+            color:black;
+            background-color: black;
+
+        }
+    </style>
+</head>
+<body>
+    <input type = "text" id ="inp" onkeypress= "starttimer()" onkeydown="endtimer(event)">
+	<p id ="para"></p>
+
+    <div id = "box">box</div>
+
+
+    <script>
+        let start; 
+		function starttimer(){
+		if (!start){
+		start = new Date().getTime()}
+		
+		}
+		
+		function endtimer(event){
+		if (event.key ==="Enter"){
+		let endtime = new Date().getTime()
+		let timee = (endtime - start)/1000
+		const len = document.getElementById("inp").value.length
+		const ele = document.getElementById("para").innerText = `time taken is ${timee} and length is ${len}`
+		}
+		}
+
+        function change(event){
+            const k = event.key
+            let col ="yellow"
+            if (k ==="B" || k =="b"){
+                col = "blue"
+
+            }
+            else if (k == "G" || k == "g"){
+                col ="green"
+
+            }
+            else if (k == "r" || k == "R"){
+            col = "red" }
+            document.getElementById("box").style.backgroundColor = col;
+
+        }
+        document.addEventListener("keypress", change)
+
+
+
+    </script>
+    
+</body>
+</html>

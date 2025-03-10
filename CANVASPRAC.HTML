@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <INPUT type ="color" id = "color" value = "#000000">
+        <input type = "number" id = "width">
+        <canvas height="1000" width = 1000 style = "border: 2px solid black; " id = "can"></canvas>
+    
+
+        <script>
+            
+            let can = document.getElementById("can")
+            let ctx = can.getContext("2d")
+            let draw = false; 
+            can.onmouseup = () => draw = false; 
+            can.onmousedown = () => draw = true; 
+            can.onmousemove =(e) => {
+                if (!draw){
+                    return; 
+                }
+                const c = document.getElementById("color").value
+            let w = document.getElementById("width").value
+                ctx.strokeStyle = c; 
+                ctx.lineWidth = w; 
+                ctx.lineCap = "square"
+                ctx.lineTo(e.offsetX, e.offsetY); 
+                ctx.stroke(); 
+                ctx.beginPath(); 
+                ctx.moveTo(e.offsetX, e.offsetY);
+            }
+
+        </script>
+</body>
+</html>

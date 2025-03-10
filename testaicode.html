@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation Example</title>
+  <script>
+    // Function to validate the form inputs
+    function validateForm() {
+      let name = document.forms["myForm"]["name"].value;
+      let email = document.forms["myForm"]["email"].value;
+      let password = document.forms["myForm"]["password"].value;
+      let message = "";
+
+      if (name == "") {
+        message += "Name must be filled out.\n";
+      }
+      if (email == "") {
+        message += "Email must be filled out.\n";
+      } else {
+        // Regex pattern for validating email format
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          message += "Invalid email format.\n";
+        }
+      }
+      if (password == "") {
+        message += "Password must be filled out.\n";
+      } else {
+        if (password.length < 6) {
+          message += "Password must be at least 6 characters long.\n";
+        }
+      }
+      if (message != "") {
+        alert(message);
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>Form Validation</h2>
+  <form name="myForm" onsubmit="return validateForm()">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email"><br><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
